@@ -575,7 +575,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC774\uACBC\uB2E4 \uC57C\uD638"
+  m_Text: '!WIN!'
 --- !u!222 &1404331526
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -872,7 +872,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB625\uAC9C \uBD10\uC8FC\uC154\uC11C \uAC10\uC0AC\uD569\uB2C8\uB2E4..."
+  m_Text: Game Clear!
 --- !u!222 &1713813419
 CanvasRenderer:
   m_ObjectHideFlags: 0

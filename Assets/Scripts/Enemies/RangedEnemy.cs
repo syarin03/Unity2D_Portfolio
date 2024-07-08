@@ -47,7 +47,9 @@ public class RangedEnemy : MonoBehaviour
         }
 
         if (enemyPatrol != null)
+        {
             enemyPatrol.enabled = !PlayerInSight();
+        }
     }
 
     private void RangedAttack()

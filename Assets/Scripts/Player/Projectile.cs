@@ -41,17 +41,17 @@ public class Projectile : MonoBehaviour
             collision.GetComponent<Hp>().TakeDamage(1);
     }
 
-    public void SetDirection(float _direction)
+    public void SetDirection(float value)
     {
         lifetime = 0;
-        direction = _direction;
+        direction = value;
         gameObject.SetActive(true);
         hit = false;
         boxCollider.enabled = true;
 
         float localScaleX = transform.localScale.x;
 
-        if (Mathf.Sign(localScaleX) != _direction)
+        if (Mathf.Sign(localScaleX) != value)
             localScaleX = -localScaleX;
 
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);

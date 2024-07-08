@@ -23,6 +23,7 @@ public class EnemyPatrol : MonoBehaviour
     private Vector3 initScale;
     private bool moveLeft;
     private float idleTimer;
+    private bool isMoving = true;
 
     private void Awake()
     {
@@ -38,31 +39,40 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (moveLeft)
         {
-            if (enemy.position.x >= leftEdge.position.x)
-                MoveInDirection(-1);
-            else
+            MoveInDirection(-1);
+            if (leftEdge.position.x - leftEdge.transform.localScale.x <= enemy.position.x && enemy.position.x <= leftEdge.position.x + leftEdge.transform.localScale.x)
+            {
                 DirectionChange();
+            }
         }
         else
         {
-            if (enemy.position.x <= rightEdge.position.x)
-                MoveInDirection(1);
-            else
+            MoveInDirection(1);
+            if (rightEdge.position.x - rightEdge.transform.localScale.x <= enemy.position.x && enemy.position.x <= rightEdge.position.x + rightEdge.transform.localScale.x)
+            {
                 DirectionChange();
+            }
         }
     }
 
     private void DirectionChange()
     {
+        isMoving = false;
+
         anim.SetBool("isMoving", false);
         idleTimer += Time.deltaTime;
 
         if (idleTimer > idleDuration)
+        {
             moveLeft = !moveLeft;
+            isMoving = true;
+        }
     }
 
     private void MoveInDirection(int direction)
     {
+        if (!isMoving) return;
+
         idleTimer = 0;
         anim.SetBool("isMoving", true);
 

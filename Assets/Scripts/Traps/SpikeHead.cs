@@ -13,7 +13,7 @@ public class SpikeHead : EnemyDamage
     private Vector3[] directions = new Vector3[4];
     private Vector3 destination;
     private float checkTimer;
-    private bool attacking;
+    private bool isAttacking;
 
     private void OnEnable()
     {
@@ -22,7 +22,7 @@ public class SpikeHead : EnemyDamage
 
     private void Update()
     {
-        if (attacking)
+        if (isAttacking)
             transform.Translate(destination * Time.deltaTime * speed);
         else
         {
@@ -40,9 +40,9 @@ public class SpikeHead : EnemyDamage
             Debug.DrawRay(transform.position, directions[i], Color.red);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, directions[i], range, playerLayer);
 
-            if (hit.collider != null && !attacking)
+            if (hit.collider != null && !isAttacking)
             {
-                attacking = true;
+                isAttacking = true;
                 destination = directions[i];
                 checkTimer = 0;
             }
@@ -55,10 +55,11 @@ public class SpikeHead : EnemyDamage
         directions[2] = transform.up * range;
         directions[3] = -transform.up * range;
     }
+
     private void Stop()
     {
         destination = transform.position;
-        attacking = false;
+        isAttacking = false;
     }
     
     private new void OnTriggerEnter2D(Collider2D collision)

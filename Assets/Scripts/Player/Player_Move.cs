@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Player_Move : MonoBehaviour
@@ -24,7 +23,6 @@ public class Player_Move : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
 
     private Rigidbody2D rigid;
-    private SpriteRenderer spriteRenderer;
     private Animator anim;
     private BoxCollider2D boxCollider;
 
@@ -40,7 +38,6 @@ public class Player_Move : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
         sizeX = transform.localScale.x;
         sizeY = transform.localScale.y;
